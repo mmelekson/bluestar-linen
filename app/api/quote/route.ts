@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 // TODO: GHL inbound webhook — uncomment and set GHL_WEBHOOK_URL env var when ready
 // async function notifyGhl(data: Record<string, string>) {
 //   const url = process.env.GHL_WEBHOOK_URL
@@ -15,6 +13,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 // }
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await req.json()
     const { businessName, contactName, businessType, city, volume, email, phone, message } =
