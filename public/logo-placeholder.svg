@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <!-- TODO: Replace with real Blue Star Linen logo -->
+  <rect width="200" height="50" fill="#0d2444" rx="4"/>
+  <polygon points="100,8 103.5,18 114,18 105.5,24 108.5,34 100,28 91.5,34 94.5,24 86,18 96.5,18" fill="#d9a118"/>
+  <text x="14" y="33" font-family="sans-serif" font-size="13" font-weight="bold" fill="white">Blue Star Linen</text>
+</svg>
