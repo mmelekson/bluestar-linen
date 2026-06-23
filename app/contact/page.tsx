@@ -6,7 +6,7 @@ import QuoteForm from '@/components/QuoteForm'
 import { SITE } from '@/lib/siteConfig'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Request a Quote — Commercial Laundry & Linen Rental',
+  title: 'Request a Quote | Blue Star Linen – Commercial Laundry & Linen Rental',
   description:
     'Contact Blue Star Linen to request a free quote for commercial laundry or linen rental service in Miami, Broward, or West Palm Beach. Call 954-682-6311.',
   path: '/contact',
@@ -26,19 +26,19 @@ export default function ContactPage() {
     <>
       <JsonLd data={breadcrumbSchema} />
 
-      <section className="bg-navy-900 text-white py-20 px-4">
+      <section className="bg-brand-700 text-white py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <nav aria-label="Breadcrumb" className="text-sm text-navy-100 mb-6">
+          <nav aria-label="Breadcrumb" className="text-sm text-brand-100 mb-6">
             <ol className="flex gap-2">
-              <li><Link href="/" className="hover:text-gold-400">Home</Link></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li aria-current="page" className="text-gold-400">Request a Quote</li>
+              <li aria-current="page">Request a Quote</li>
             </ol>
           </nav>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Request a Free Quote</h1>
-          <p className="text-xl text-navy-100 max-w-2xl">
-            Tell us about your property and we&rsquo;ll put together a custom commercial laundry or linen
-            rental program that fits your operation. No commitment required.
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Request a Quote</h1>
+          <p className="text-xl text-brand-100 max-w-2xl">
+            Tell us about your property and we&rsquo;ll put together a custom commercial laundry or
+            linen rental program that fits your operation.
           </p>
         </div>
       </section>
@@ -47,71 +47,73 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Form */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-navy-900 mb-8">Quote Request Form</h2>
+            <h2 className="text-2xl font-bold text-brand-700 mb-8">Quote Request Form</h2>
             <QuoteForm />
           </div>
 
           {/* Sidebar */}
           <aside className="lg:col-span-1">
-            <div className="bg-navy-50 rounded-xl p-8 sticky top-24">
-              <h2 className="text-xl font-bold text-navy-900 mb-6">Contact Info</h2>
-              <div className="space-y-4 text-sm text-gray-700">
+            <div className="bg-brand-50 rounded-xl p-8 sticky top-24">
+              <h2 className="text-xl font-bold text-brand-700 mb-6">Contact Info</h2>
+              <address className="not-italic space-y-4 text-sm text-gray-700">
                 <div>
-                  <p className="font-semibold text-navy-900 mb-1">Phone</p>
+                  <p className="font-semibold text-brand-700 mb-1">Address</p>
+                  <p>{SITE.address.streetAddress}</p>
+                  <p>{SITE.address.addressLocality}, {SITE.address.addressRegion} {SITE.address.postalCode}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-700 mb-1">Phone</p>
                   <a
                     href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-                    className="text-navy-500 hover:text-navy-700 font-medium"
+                    className="text-steel-500 hover:text-steel-600 font-medium"
                   >
                     {SITE.phone}
                   </a>
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-900 mb-1">WhatsApp</p>
+                  <p className="font-semibold text-brand-700 mb-1">Email</p>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="text-steel-500 hover:text-steel-600 font-medium"
+                  >
+                    {SITE.email}
+                  </a>
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-700 mb-1">WhatsApp</p>
                   <a
                     href={`https://wa.me/${SITE.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-navy-500 hover:text-navy-700 font-medium"
+                    className="text-steel-500 hover:text-steel-600 font-medium"
                   >
-                    Message us on WhatsApp
+                    +1-786-547-2572
                   </a>
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-900 mb-1">Availability</p>
+                  <p className="font-semibold text-brand-700 mb-1">Availability</p>
                   <p>24 hours a day, 7 days a week</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-900 mb-1">Service Area</p>
-                  <p>Miami-Dade &middot; Broward &middot; Palm Beach</p>
+                  <p className="font-semibold text-brand-700 mb-1">Service Area</p>
+                  <p>Miami-Dade · Broward · Palm Beach</p>
                 </div>
-              </div>
+              </address>
 
-              <div className="mt-8 pt-6 border-t border-navy-100">
-                <h3 className="font-bold text-navy-900 mb-3">Follow Us</h3>
+              <div className="mt-8 pt-6 border-t border-brand-100">
+                <h3 className="font-bold text-brand-700 mb-3">Follow Us</h3>
                 <div className="flex flex-col gap-2 text-sm">
-                  <a
-                    href={SITE.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-navy-500 hover:text-navy-700 transition-colors"
-                  >
-                    Instagram &mdash; @blue.starlinen
+                  <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer"
+                    className="text-steel-500 hover:text-steel-600 transition-colors">
+                    Instagram — @blue.starlinen
                   </a>
-                  <a
-                    href={SITE.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-navy-500 hover:text-navy-700 transition-colors"
-                  >
-                    Facebook &mdash; oceanlinen
+                  <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer"
+                    className="text-steel-500 hover:text-steel-600 transition-colors">
+                    Facebook — oceanlinen
                   </a>
-                  <a
-                    href={SITE.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-navy-500 hover:text-navy-700 transition-colors"
-                  >
-                    LinkedIn &mdash; Ofer Manor
+                  <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer"
+                    className="text-steel-500 hover:text-steel-600 transition-colors">
+                    LinkedIn — Ofer Manor
                   </a>
                 </div>
               </div>

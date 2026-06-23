@@ -2,14 +2,15 @@ export const SITE = {
   name: 'Blue Star Linen',
   url: 'https://www.bluestarlinen.com',
   description:
-    'Blue Star Linen is a women-owned commercial laundry and linen rental company serving South Florida since 2003. 24/7 service for hotels, restaurants, spas, and condominiums in Miami-Dade, Broward, and Palm Beach counties.',
+    'Blue Star Linen — trusted partner in premium linen and laundry services for hotels, restaurants, spas, condominiums, and luxury homes. Women-owned, 23+ years, 24/7 service in Miami, Broward, and West Palm Beach.',
   phone: process.env.NEXT_PUBLIC_PHONE ?? '954-682-6311',
   whatsapp: '17865472572',
+  email: 'sales@bluestarlinen.com',
   address: {
-    streetAddress: 'South Florida',
-    addressLocality: 'Fort Lauderdale',
+    streetAddress: '6780 NW 37th Court',
+    addressLocality: 'Miami',
     addressRegion: 'FL',
-    postalCode: '33301',
+    postalCode: '33147',
     addressCountry: 'US',
   },
   social: {

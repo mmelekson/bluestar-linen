@@ -3,72 +3,22 @@ import { SITE } from '@/lib/siteConfig'
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-900 text-white pt-12 pb-6 mt-16">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-brand-900 text-white pt-14 pb-6">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Brand */}
         <div>
-          <h2 className="font-bold text-lg mb-3">Blue Star Linen</h2>
-          <p className="text-sm text-navy-100 leading-relaxed">
-            Women-owned commercial laundry &amp; linen rental serving South Florida since 2003.
-            24/7 service for hotels, restaurants, spas, and condominiums.
+          <h2 className="font-bold text-lg mb-4">Blue Star Linen</h2>
+          <p className="text-sm text-brand-100 leading-relaxed mb-4">
+            Your trusted partner in premium linen and laundry services. Women-owned, minority-led,
+            serving South Florida since 2003.
           </p>
-        </div>
-
-        <div>
-          <h2 className="font-bold text-lg mb-3">Services</h2>
-          <ul className="text-sm text-navy-100 space-y-2">
-            <li>
-              <Link href="/linen-rental" className="hover:text-gold-400 transition-colors">
-                Linen Rental
-              </Link>
-            </li>
-            <li>
-              <Link href="/industrial-laundry" className="hover:text-gold-400 transition-colors">
-                Industrial Laundry
-              </Link>
-            </li>
-            <li>
-              <Link href="/service-areas" className="hover:text-gold-400 transition-colors">
-                Service Areas
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-gold-400 transition-colors">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-gold-400 transition-colors">
-                Request a Quote
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="font-bold text-lg mb-3">Contact</h2>
-          <div className="text-sm text-navy-100 space-y-2">
-            <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-              className="block hover:text-gold-400 transition-colors"
-            >
-              {SITE.phone}
-            </a>
-            <a
-              href={`https://wa.me/${SITE.whatsapp}`}
-              className="block hover:text-gold-400 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-          </div>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-2">
             <a
               href={SITE.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Blue Star Linen on Instagram"
-              className="text-navy-100 hover:text-gold-400 transition-colors text-sm"
+              className="text-brand-100 hover:text-white transition-colors text-sm"
             >
               Instagram
             </a>
@@ -77,7 +27,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Blue Star Linen on Facebook"
-              className="text-navy-100 hover:text-gold-400 transition-colors text-sm"
+              className="text-brand-100 hover:text-white transition-colors text-sm"
             >
               Facebook
             </a>
@@ -86,18 +36,63 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Blue Star Linen on LinkedIn"
-              className="text-navy-100 hover:text-gold-400 transition-colors text-sm"
+              className="text-brand-100 hover:text-white transition-colors text-sm"
             >
               LinkedIn
             </a>
           </div>
         </div>
+
+        {/* Navigation */}
+        <div>
+          <h2 className="font-bold text-lg mb-4">Navigation</h2>
+          <ul className="text-sm text-brand-100 space-y-2">
+            {[
+              { href: '/', label: 'Home' },
+              { href: '/about-us', label: 'About Us' },
+              { href: '/services', label: 'Services' },
+              { href: '/clients', label: 'Clients' },
+              { href: '/testimonials', label: 'Testimonials' },
+              { href: '/careers', label: 'Careers' },
+              { href: '/contact', label: 'Request a Quote' },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:text-white transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h2 className="font-bold text-lg mb-4">Contact</h2>
+          <address className="not-italic text-sm text-brand-100 space-y-2">
+            <p>{SITE.address.streetAddress}</p>
+            <p>{SITE.address.addressLocality}, {SITE.address.addressRegion} {SITE.address.postalCode}</p>
+            <a href={`tel:${SITE.phone.replace(/\D/g, '')}`} className="block hover:text-white transition-colors mt-3">
+              {SITE.phone}
+            </a>
+            <a href={`mailto:${SITE.email}`} className="block hover:text-white transition-colors">
+              {SITE.email}
+            </a>
+            <a
+              href={`https://wa.me/${SITE.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:text-white transition-colors"
+            >
+              WhatsApp: +1-786-547-2572
+            </a>
+          </address>
+        </div>
       </div>
 
-      <p className="text-center text-xs text-navy-100 mt-10 px-4">
-        © {new Date().getFullYear()} Blue Star Linen. All rights reserved. Women-owned &amp;
-        Minority-owned Business.
-      </p>
+      <div className="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-brand-700 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-brand-100">
+        <p>© {new Date().getFullYear()} Blue Star Linen. All rights reserved.</p>
+        <p>Women-Owned &amp; Minority-Owned Business · Miami, Florida</p>
+      </div>
     </footer>
   )
 }

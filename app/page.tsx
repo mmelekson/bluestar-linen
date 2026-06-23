@@ -1,98 +1,61 @@
-import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
 import JsonLd from '@/components/JsonLd'
-import { SITE } from '@/lib/siteConfig'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Commercial Laundry & Linen Rental South Florida',
+  title: 'Blue Star Linen | Premium Linen & Laundry Services – South Florida',
   description:
-    'Blue Star Linen — women-owned commercial laundry and linen rental serving Miami, Broward, and West Palm Beach since 2003. 24/7 service. Request a free quote.',
+    'Your partner in premium linen and laundry services. Trusted by hotels, restaurants, spas, condominiums, and luxury homes in Miami, Broward, and West Palm Beach.',
   path: '/',
 })
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://www.bluestarlinen.com/#business',
   name: 'Blue Star Linen',
-  description: SITE.description,
-  url: SITE.url,
-  telephone: SITE.phone,
-  foundingDate: SITE.foundingDate,
-  openingHours: 'Mo-Su 00:00-23:59',
-  priceRange: '$$',
-  areaServed: [
-    { '@type': 'AdministrativeArea', name: 'Miami-Dade County' },
-    { '@type': 'AdministrativeArea', name: 'Broward County' },
-    { '@type': 'AdministrativeArea', name: 'Palm Beach County' },
-  ],
+  url: 'https://www.bluestarlinen.com',
+  telephone: '954-682-6311',
+  email: 'sales@bluestarlinen.com',
   address: {
     '@type': 'PostalAddress',
-    ...SITE.address,
+    streetAddress: '6780 NW 37th Court',
+    addressLocality: 'Miami',
+    addressRegion: 'FL',
+    postalCode: '33147',
+    addressCountry: 'US',
   },
-  sameAs: Object.values(SITE.social),
+  openingHours: 'Mo-Su 00:00-23:59',
+  description:
+    'Women-owned commercial laundry and linen rental serving South Florida since 2003.',
+  foundingDate: '2003',
+  areaServed: ['Miami-Dade', 'Broward', 'Palm Beach'],
+  sameAs: [
+    'https://www.instagram.com/blue.starlinen',
+    'https://www.facebook.com/oceanlinen',
+    'https://www.linkedin.com/in/ofer-manor',
+  ],
 }
 
-const faqs = [
-  {
-    name: 'What types of businesses does Blue Star Linen serve?',
-    answer:
-      'Blue Star Linen serves hotels, restaurants, spas, condominiums, and luxury homes throughout South Florida, including Miami-Dade, Broward, and Palm Beach counties.',
-  },
-  {
-    name: 'Does Blue Star Linen offer 24/7 service?',
-    answer:
-      'Yes. Blue Star Linen provides 24/7 service, including emergency deliveries during peak seasons and unexpected demand spikes.',
-  },
-  {
-    name: 'What is the difference between linen rental and industrial laundry services?',
-    answer:
-      'With linen rental, Blue Star Linen owns the linens and delivers freshly laundered inventory on a schedule — eliminating your capital investment and storage burden. Industrial laundry is a wash-process-return service for linens you already own.',
-  },
-  {
-    name: 'Is Blue Star Linen a certified women-owned business?',
-    answer:
-      'Yes. Blue Star Linen is a certified women-owned and minority-owned business with over 23 years of experience in South Florida commercial laundry.',
-  },
-  {
-    name: 'How do I get a quote from Blue Star Linen?',
-    answer: `Fill out the Request a Quote form on our Contact page or call us at ${SITE.phone}. We respond within one business day.`,
-  },
+const stats = [
+  { value: '23+', label: 'Years of experience in industrial laundry excellence' },
+  { value: '24/7', label: 'Service available for your business needs' },
+  { value: 'Women‑Owned', label: 'Women-owned and minority-owned business' },
+  { value: 'Smart', label: 'Intelligent Laundry Automation with advanced technology' },
 ]
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.name,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
-}
-
-const testimonials = [
+const services = [
   {
-    quote:
-      "Blue Star Linen transformed our operations with their efficient service. They're truly the best in South Florida!",
-    author: 'General Manager',
-    company: 'Luxury Hotel, Miami',
+    title: 'Linen Rental',
+    description: 'Simplify your linen management and maximize your profits—no hassle!',
+    image: '/images/linen-rental.avif',
   },
   {
-    quote:
-      'The rental linens program is a game-changer for us. The quality is excellent, and the service is always timely.',
-    author: 'Owner',
-    company: 'Restaurant, Fort Lauderdale',
-  },
-  {
-    quote:
-      'We had an emergency during peak season and Blue Star Linen saved the day with their prompt delivery.',
-    author: 'Spa Director',
-    company: 'Day Spa, South Beach',
-  },
-  {
-    quote: 'Having a dependable laundry partner is essential. Blue Star Linen always exceeds expectations.',
-    author: 'Property Manager',
-    company: 'Condo Association, Miami',
+    title: 'Industrial Laundry',
+    description: 'Reliable, efficient, and professional care for your linens.',
+    image: '/images/industrial-laundry.jpg',
   },
 ]
 
@@ -100,197 +63,147 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={localBusinessSchema} />
-      <JsonLd data={faqSchema} />
 
       {/* Hero */}
-      <section className="bg-navy-900 text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-            South Florida&rsquo;s Trusted Commercial Laundry &amp; Linen Rental
+      <section className="relative min-h-[580px] flex items-center">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Blue Star Linen laundry facility"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-brand-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 text-white text-center w-full">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-3xl mx-auto">
+            Your Partner in Premium Linen &amp; Laundry Services
           </h1>
-          <p className="text-xl text-navy-100 mb-4 max-w-2xl mx-auto leading-relaxed">
-            <strong>Blue Star Linen is a women-owned commercial laundry and linen rental company</strong>{' '}
-            serving South Florida since 2003. Hotels, restaurants, spas, and condominiums across
-            Miami, Broward, and West Palm Beach count on us — 24 hours a day, 7 days a week.
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+            Trusted by Hotels, Restaurants, Spas, Condominiums, and Luxury Homes, we combine
+            quality, efficiency, and care to keep your business looking its best.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link
-              href="/contact"
-              className="bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold px-8 py-4 rounded-md text-lg transition-colors"
-            >
-              Request a Free Quote
-            </Link>
-            <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-              className="border-2 border-white hover:bg-white hover:text-navy-900 text-white font-bold px-8 py-4 rounded-md text-lg transition-colors"
-            >
-              Call {SITE.phone}
-            </a>
+          <Link
+            href="/contact"
+            className="inline-block bg-white text-brand-700 hover:bg-brand-100 font-bold text-lg px-8 py-4 rounded shadow-lg transition-colors"
+          >
+            Request a Quote
+          </Link>
+        </div>
+      </section>
+
+      {/* Trusted Partner Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-brand-700 mb-6 leading-snug">
+              Your Trusted Partner for Industrial Laundry Excellence
+            </h2>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              We provide top-quality industrial laundry services tailored to meet the specific needs
+              of the hospitality and food and beverage industries in Miami, Broward, and West Palm
+              Beach, Florida.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              With over 23 years of experience as a women-owned and minority-owned business, we
+              offer 24/7 service that stands out for its reliability, quality, and meticulous
+              attention to detail.
+            </p>
+          </div>
+          <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src="/images/facility.jpg"
+              alt="Blue Star Linen laundry facility"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
 
-      {/* Trust bar */}
-      <section className="bg-gold-500 py-4 px-4" aria-label="Key facts">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-6 text-navy-900 font-semibold text-sm md:text-base">
-          <span>&#10003; 23+ Years of Experience</span>
-          <span>&#10003; Women-Owned &amp; Minority-Owned</span>
-          <span>&#10003; 24/7 Service Available</span>
-          <span>&#10003; Miami &middot; Broward &middot; West Palm Beach</span>
-        </div>
-      </section>
-
-      {/* Services overview */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-navy-900 text-center mb-4">Our Services</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            From daily industrial laundry processing to fully managed linen rental programs, we
-            handle every aspect of your linen supply chain.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border border-navy-100 rounded-xl p-8 hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4" aria-hidden="true">🏨</div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Linen Rental</h3>
-              <p className="text-gray-600 mb-4">
-                Skip the capital investment. We supply hotel-quality bed linens, towels,
-                tablecloths, napkins, and spa linens — washed, pressed, and delivered on your
-                schedule. Pay only for what you use.
-              </p>
-              <Link
-                href="/linen-rental"
-                className="text-navy-500 font-semibold hover:text-navy-700 transition-colors"
-              >
-                Learn about Linen Rental &rarr;
-              </Link>
+      {/* Stats */}
+      <section className="bg-brand-700 py-16 text-white">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <div className="text-4xl font-bold mb-2">{s.value}</div>
+              <div className="text-sm text-brand-100 leading-snug">{s.label}</div>
             </div>
-            <div className="border border-navy-100 rounded-xl p-8 hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4" aria-hidden="true">🔄</div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Industrial Laundry</h3>
-              <p className="text-gray-600 mb-4">
-                High-capacity washing, professional finishing, and careful handling for the linens
-                you already own. Advanced cleaning techniques preserve quality and extend linen
-                lifespan.
-              </p>
-              <Link
-                href="/industrial-laundry"
-                className="text-navy-500 font-semibold hover:text-navy-700 transition-colors"
-              >
-                Learn about Industrial Laundry &rarr;
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Who we serve */}
-      <section className="py-20 px-4 bg-navy-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-navy-900 text-center mb-4">Industries We Serve</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Any hospitality or commercial property in South Florida that needs reliable, professional
-            linen service.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-            {['Hotels & Resorts', 'Restaurants & Cafes', 'Spas & Salons', 'Condominiums', 'Luxury Homes'].map(
-              (ind) => (
-                <div key={ind} className="bg-white rounded-lg p-6 shadow-sm">
-                  <p className="font-semibold text-navy-700 text-sm">{ind}</p>
-                </div>
-              ),
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Service areas */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-navy-900 text-center mb-4">Service Areas</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            We serve commercial properties across Miami-Dade, Broward, and Palm Beach counties.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: 'Miami-Dade County',
-                slug: 'miami',
-                desc: 'Commercial laundry and linen rental for hotels, restaurants, and spas throughout Miami and surrounding cities.',
-              },
-              {
-                name: 'Broward County',
-                slug: 'broward',
-                desc: 'Serving Fort Lauderdale, Hollywood, Pompano Beach, and all of Broward County with daily linen service.',
-              },
-              {
-                name: 'West Palm Beach',
-                slug: 'west-palm-beach',
-                desc: 'Premium linen rental and laundry service for Palm Beach County hospitality businesses.',
-              },
-            ].map((area) => (
-              <div key={area.slug} className="border border-navy-100 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-navy-900 mb-2">{area.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{area.desc}</p>
-                <Link
-                  href={`/service-areas/${area.slug}`}
-                  className="text-navy-500 font-semibold text-sm hover:text-navy-700 transition-colors"
-                >
-                  Commercial laundry in {area.name} &rarr;
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 px-4 bg-navy-900 text-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((t, i) => (
-              <blockquote key={i} className="bg-navy-700 rounded-xl p-8">
-                <p className="text-navy-100 italic mb-4">&ldquo;{t.quote}&rdquo;</p>
-                <footer className="font-semibold text-gold-400">
-                  {t.author} &mdash; {t.company}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-navy-900 text-center mb-12">
-            Frequently Asked Questions
+      {/* Services */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-700 text-center mb-12">
+            Our Laundry Solutions
           </h2>
-          <dl className="space-y-8">
-            {faqs.map((f, i) => (
-              <div key={i} className="border-b border-gray-200 pb-6">
-                <dt className="font-bold text-navy-900 mb-2">{f.name}</dt>
-                <dd className="text-gray-600">{f.answer}</dd>
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((s) => (
+              <Link
+                key={s.title}
+                href="/services"
+                className="group bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow"
+              >
+                <div className="relative h-56">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-brand-700 mb-2">{s.title}</h3>
+                  <p className="text-gray-600">{s.description}</p>
+                  <span className="mt-4 inline-block text-steel-500 font-semibold text-sm">
+                    Learn more →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who We Serve */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-brand-700 mb-4">
+            Designed for the Hospitality Industry
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+            We proudly serve a wide range of clients who demand consistency, quality, and
+            reliability.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+            {['Hotels', 'Restaurants', 'Spas', 'Condominiums', 'Luxury Homes'].map((c) => (
+              <div
+                key={c}
+                className="bg-brand-50 rounded-xl py-6 px-4 text-brand-700 font-semibold text-sm shadow-sm"
+              >
+                {c}
               </div>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 bg-gold-500">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-navy-900 mb-4">
-            Ready to Simplify Your Linen Operations?
-          </h2>
-          <p className="text-navy-700 text-lg mb-8">
-            Get a custom quote for your property today. No commitment required.
+      <section className="bg-brand-700 py-16 text-white text-center">
+        <div className="max-w-2xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Ready to Partner with Us?</h2>
+          <p className="text-brand-100 mb-8">
+            Contact us today to learn how Blue Star Linen can serve your business.
           </p>
           <Link
             href="/contact"
-            className="bg-navy-900 hover:bg-navy-700 text-white font-bold px-10 py-4 rounded-md text-lg transition-colors inline-block"
+            className="inline-block bg-white text-brand-700 font-bold px-8 py-4 rounded hover:bg-brand-100 transition-colors text-lg"
           >
-            Request a Free Quote
+            Request a Quote
           </Link>
         </div>
       </section>

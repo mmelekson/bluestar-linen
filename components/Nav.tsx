@@ -6,42 +6,49 @@ import { SITE } from '@/lib/siteConfig'
 
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/linen-rental', label: 'Linen Rental' },
-  { href: '/industrial-laundry', label: 'Industrial Laundry' },
-  { href: '/service-areas', label: 'Service Areas' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/about-us', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/clients', label: 'Clients' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/careers', label: 'Careers' },
 ]
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   return (
-    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-lg">
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-3" aria-label="Blue Star Linen — home">
-          {/* TODO: Replace logo-placeholder.svg with real Blue Star Linen logo */}
+    <header className="bg-brand-700 text-white sticky top-0 z-50 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-18 py-3">
+        <Link href="/" aria-label="Blue Star Linen — home">
           <Image
-            src="/logo-placeholder.svg"
+            src="/images/logo.png"
             alt="Blue Star Linen logo"
-            width={160}
-            height={40}
+            width={180}
+            height={50}
             priority
+            className="h-12 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav
-          className="hidden md:flex items-center gap-6 text-sm font-medium"
-          aria-label="Main navigation"
-        >
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium" aria-label="Main navigation">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-gold-400 transition-colors">
+            <Link
+              key={l.href}
+              href={l.href}
+              className="hover:text-brand-100 transition-colors whitespace-nowrap"
+            >
               {l.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="bg-white text-brand-700 hover:bg-brand-100 font-bold px-5 py-2 rounded transition-colors whitespace-nowrap"
+          >
+            Request a Quote
+          </Link>
           <a
             href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-            className="bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold px-4 py-2 rounded-md transition-colors"
+            className="text-sm opacity-80 hover:opacity-100 transition-opacity"
           >
             {SITE.phone}
           </a>
@@ -49,7 +56,7 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2"
+          className="lg:hidden p-2"
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
@@ -64,22 +71,29 @@ export default function Nav() {
       {open && (
         <nav
           id="mobile-nav"
-          className="md:hidden bg-navy-700 px-4 pb-4 flex flex-col gap-3 text-sm font-medium"
+          className="lg:hidden bg-brand-900 px-4 pb-5 flex flex-col gap-1 text-sm font-medium border-t border-brand-500"
           aria-label="Mobile navigation"
         >
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="hover:text-gold-400 py-1 transition-colors"
+              className="py-3 border-b border-brand-700 hover:text-brand-100 transition-colors"
               onClick={() => setOpen(false)}
             >
               {l.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="mt-3 bg-white text-brand-700 font-bold px-5 py-3 rounded text-center"
+            onClick={() => setOpen(false)}
+          >
+            Request a Quote
+          </Link>
           <a
             href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-            className="bg-gold-500 text-navy-900 font-bold px-4 py-2 rounded-md text-center"
+            className="py-3 text-center opacity-80"
           >
             {SITE.phone}
           </a>

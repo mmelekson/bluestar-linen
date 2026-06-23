@@ -66,7 +66,7 @@ export default function QuoteForm() {
             name="businessName"
             type="text"
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
             placeholder="Oceanview Hotel"
           />
         </label>
@@ -78,7 +78,7 @@ export default function QuoteForm() {
             name="contactName"
             type="text"
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
             placeholder="Jane Smith"
           />
         </label>
@@ -89,7 +89,7 @@ export default function QuoteForm() {
           <span className="block text-sm font-semibold text-gray-700 mb-1">Business Type</span>
           <select
             name="businessType"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500 bg-white"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
           >
             <option value="">Select one</option>
             {businessTypes.map((t) => (
@@ -102,7 +102,7 @@ export default function QuoteForm() {
           <input
             name="city"
             type="text"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
             placeholder="Miami Beach, FL"
           />
         </label>
@@ -115,7 +115,7 @@ export default function QuoteForm() {
         <input
           name="volume"
           type="text"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
           placeholder="e.g. 500 lbs/week, 200 towels/week"
         />
       </label>
@@ -129,7 +129,7 @@ export default function QuoteForm() {
             name="email"
             type="email"
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
             placeholder="jane@hotel.com"
           />
         </label>
@@ -138,7 +138,7 @@ export default function QuoteForm() {
           <input
             name="phone"
             type="tel"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
             placeholder="(305) 555-0100"
           />
         </label>
@@ -151,7 +151,7 @@ export default function QuoteForm() {
         <textarea
           name="message"
           rows={4}
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-navy-500 resize-y"
+          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y"
           placeholder="Describe your linen needs, current pain points, or any questions..."
         />
       </label>
@@ -165,7 +165,7 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={state === 'loading'}
-        className="w-full bg-navy-900 hover:bg-navy-700 disabled:opacity-60 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
+        className="w-full bg-brand-700 hover:bg-brand-900 disabled:opacity-60 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
       >
         {state === 'loading' ? 'Sending…' : 'Submit Quote Request'}
       </button>

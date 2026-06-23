@@ -2,29 +2,44 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #212121;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 
-  /* Brand palette — navy */
-  --color-navy-50:  #eef2f7;
-  --color-navy-100: #cfdaea;
-  --color-navy-500: #1e4d8c;
-  --color-navy-700: #143566;
-  --color-navy-900: #0d2444;
+  /* Brand palette — sampled from bluestarlinen.com */
+  /* Primary deep navy (hero, header, CTAs) */
+  --color-brand-50:  #edf1f8;
+  --color-brand-100: #c8d3e8;
+  --color-brand-200: #a3b5d8;
+  --color-brand-500: #2e4a8e;
+  --color-brand-700: #262e65;
+  --color-brand-900: #1a1f44;
 
-  /* Brand palette — gold */
-  --color-gold-400: #f0b429;
-  --color-gold-500: #d9a118;
+  /* Steel blue (accent, links, hover) */
+  --color-steel-400: #4b7fb8;
+  --color-steel-500: #2b5672;
+  --color-steel-600: #1e3d52;
+
+  /* Neutral */
+  --color-gray-50:   #f8f9fa;
+  --color-gray-100:  #f1f3f5;
+  --color-gray-200:  #e9ecef;
+  --color-gray-500:  #6c757d;
+  --color-gray-700:  #495057;
+  --color-gray-900:  #212529;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
 }

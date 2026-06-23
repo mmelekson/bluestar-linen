@@ -3,15 +3,13 @@ import { SITE } from '@/lib/siteConfig'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
-    { path: '',                          priority: 1.0 },
-    { path: '/linen-rental',             priority: 0.9 },
-    { path: '/industrial-laundry',       priority: 0.9 },
-    { path: '/service-areas',            priority: 0.8 },
-    { path: '/service-areas/miami',      priority: 0.8 },
-    { path: '/service-areas/broward',    priority: 0.8 },
-    { path: '/service-areas/west-palm-beach', priority: 0.8 },
-    { path: '/about',                    priority: 0.6 },
-    { path: '/contact',                  priority: 0.7 },
+    { path: '',                  priority: 1.0 },
+    { path: '/about-us',         priority: 0.9 },
+    { path: '/services',         priority: 0.9 },
+    { path: '/clients',          priority: 0.7 },
+    { path: '/testimonials',     priority: 0.7 },
+    { path: '/careers',          priority: 0.6 },
+    { path: '/contact',          priority: 0.8 },
   ]
 
   return pages.map((p) => ({
